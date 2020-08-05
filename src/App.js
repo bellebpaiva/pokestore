@@ -11,6 +11,10 @@ class App extends Component {
     this.state = {
       pokemons : [],
       pokemonDetails : [],
+      search: "",
+      type: "",
+      offset: 0,
+      loadNumber: 50
     }    
   }
 
@@ -43,16 +47,48 @@ class App extends Component {
     .catch(console.log)
   }
 
+  buscaPesquisa = e => {
+    this.setState({ search: e.target.value})
+  }
+
+  menuFogo = e =>{
+    this.setState({ type: "ice"  })
+  }
+
   render() {
     const {pokemonDetails} = this.state;
 
     const renderedPokemonList = pokemonDetails.map((pokemon, index) => {
+      // if (this.state.search !== "" && pokemon.name.indexOf ( this.state.search ) === -1) {
+      //   return null
+      // }
+
+      if (this.state.type !== ""){
+        var tipo1 = pokemon.types[0].type.name;
+        var tipo2 = "";
+        //se eu possuo um segundo tipo, ou seja, o meu array possui mais de um elemento:
+        if(pokemon.types.lenght > 1){
+          //defino o segundo tipo
+          tipo2 = pokemon.types[1].type.name;
+        }
+        //se o tipo primário e secundário do pokémon atual não for igual ao do menu:
+        if ((tipo1.indexOf ( this.state.type ) === -1) && (tipo2.indexOf ( this.state.type ) === -1)){
+          return null
+        }
+      }
+    
       return (<PokeCard pokemon={pokemon} />);
     });
 
     return (
       <div className="container">
-        <div className="card-columns">
+        <div className="container-search">
+          <input className="search-fire" label="Buscar Pokemon" icon="search" onChange = {this.buscaPesquisa}></input>
+          <button className="btnsearch-fire">Buscar</button>
+        </div>
+
+        <button onClick= {this.menuFogo}>Fogo</button>
+        <div className="card-columns colums-new">
           {renderedPokemonList}
         </div>
       </div>
@@ -61,12 +97,5 @@ class App extends Component {
 }
 
 
-//function App() {
-//  return (
-//    <div className="App">
-//      <h1>HELLO, WORLD</h1>
-//    </div>
-//  );
-//}
 
 export default App;

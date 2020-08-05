@@ -13,6 +13,14 @@ function Menu() {
             </Link>
 
 
+            {/* <Button  className="ButtonLink">
+                Fogo
+            </Button>  
+
+            <Button  className="ButtonLink">
+                Gelo
+            </Button>   */}
+
 
             <Button as={Link} className="ButtonLink" to="login">
                 Entre ou Cadastre-se

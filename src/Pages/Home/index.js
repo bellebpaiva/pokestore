@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Menu from '../../Components/Menu';
 import App from '../../App';
 import Footer from '../../Components/Footer';
-//import Footer from '../../components/Footer';
+
 
 const HomeWrapper = styled.div`
   background: var(--grayLight);
@@ -17,7 +17,6 @@ function Home() {
       <Menu />
       <App />
       <Footer />
-
     </HomeWrapper>
   );
 }

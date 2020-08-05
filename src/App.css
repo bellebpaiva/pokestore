@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+@media (min-width: 980px) {
+  .colums-new {
+    column-count:5 !important; 
+  }
+}
+
+.container-search {
+  background-color:var(--graylight);
+  border:solid 2px var(--secundary);
+  border-radius:10px;
+  width:265px;
+  height:32px;
+}
+
+.search-fire{
+  float:left;
+  background-color:transparent;
+  font-size:18px;
+  border:none;
+  height:32px;
+  width:191px;
+}
+
+.btnsearch-fire{
+  border:none;
+  float:left;
+  height:32px;
+  border-radius:0 7px 7px 0;
+  width:70px;
+  color: var(--white);
+  background: var(--secundary);
+}
+
+
