@@ -1,8 +1,15 @@
 import React from 'react';
 import "./card.css";
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 
+const HandleClick = e => {
+  const myelement = React.createElement('div', {}, e.target.parentElement.childNodes[1].innerHTML);
+  ReactDOM.render(myelement, document.getElementById('itens-menu'));
+}
+const min = 1;
+const max = 150;
 
 const PokeCard = ({pokemon}) => {
     return (
@@ -12,8 +19,8 @@ const PokeCard = ({pokemon}) => {
         <div className="card-body">          
           <img src={pokemon.sprites['front_default']} />
          
-          <h6 className="card-subtitle mb-2 text-muted" style={{"font-weight": "bold"}}>R$ 199,00</h6>   
-          <a href="#" className="card-button-fire"> COMPRAR </a>
+          <h6 className="card-subtitle mb-2 text-muted" style={{"font-weight": "bold"}}>R$ {(min + Math.random() * (max - min)).toFixed(2)}</h6>   
+          <button className="card-button-fire" onClick={HandleClick}>Comprar</button>  
         </div>
       </div>
       
